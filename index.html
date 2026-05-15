@@ -61,20 +61,6 @@ textarea{resize:none;line-height:1.6}
 .link-btn{background:transparent;color:var(--gold-1);font-size:12px}
 button:active{transform:scale(.97)}
 
-/* PIN SCREEN */
-.pin-screen{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:24px;text-align:center}
-.pin-logo{width:72px;height:72px;border-radius:50%;display:grid;place-items:center;background:radial-gradient(circle at 32% 25%,var(--gold-0),var(--gold-1) 38%,var(--gold-3));color:#1b1000;font-family:'Tajawal',sans-serif;font-size:32px;font-weight:900;margin:0 auto}
-.pin-title{font-family:'Tajawal',sans-serif;font-size:24px;font-weight:900}
-.pin-dots{display:flex;gap:16px;justify-content:center;margin:8px 0}
-.pin-dot{width:16px;height:16px;border-radius:50%;border:2px solid var(--gold-2);background:transparent;transition:.2s}
-.pin-dot.filled{background:var(--gold-2)}
-.pin-pad{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;width:min(280px,100%)}
-.pin-btn{height:72px;border-radius:20px;background:var(--bg-3);border:1px solid rgba(255,255,255,.08);color:var(--text);font-family:'Tajawal',sans-serif;font-size:26px;font-weight:900}
-.pin-btn:active{background:var(--bg-4);transform:scale(.95)}
-.pin-btn.del{font-size:18px;color:var(--gold-1)}
-.pin-btn.empty{background:transparent;border:none;cursor:default}
-.pin-error{color:var(--red);font-size:13px;min-height:20px}
-.pin-link{color:var(--faint);font-size:12px;background:transparent;border:none;cursor:pointer}
 
 /* ONBOARDING */
 .onboarding-screen{background:var(--bg);padding-bottom:120px}
@@ -225,12 +211,6 @@ button:active{transform:scale(.97)}
 .photo-preview{width:64px;height:64px;border-radius:18px;background:linear-gradient(135deg,var(--gold-4),var(--gold-2));color:#1a0e00;display:flex;align-items:center;justify-content:center;font-family:'Tajawal',sans-serif;font-size:26px;font-weight:900;overflow:hidden;flex-shrink:0}
 .photo-preview img{width:100%;height:100%;object-fit:cover;border-radius:18px}
 .photo-upload-btn{flex:1;padding:12px;border-radius:14px;background:var(--bg-4);color:var(--gold-1);border:1px solid var(--line);font-size:13px;font-weight:900;cursor:pointer;text-align:center}
-.pin-setting-row{display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid rgba(255,255,255,.04)}
-.pin-setting-label{font-size:13px;color:var(--muted)}
-.toggle-sw{width:44px;height:26px;background:var(--bg-4);border-radius:99px;position:relative;cursor:pointer;border:1px solid rgba(255,255,255,.08);transition:.2s}
-.toggle-sw.on{background:var(--gold-2)}
-.toggle-sw:after{content:'';position:absolute;top:3px;right:3px;width:18px;height:18px;background:#fff;border-radius:50%;transition:.2s}
-.toggle-sw.on:after{right:auto;left:3px}
 
 /* BOTTOM NAV - 5 items */
 .bottom-nav{position:fixed;left:0;right:0;bottom:0;height:calc(72px + var(--safe-bottom));padding:6px 6px var(--safe-bottom);display:grid;grid-template-columns:1fr 1fr 1fr 60px 1fr 1fr 1fr;align-items:center;background:rgba(8,13,24,.94);border-top:1px solid var(--line);backdrop-filter:blur(24px);z-index:20}
@@ -314,36 +294,6 @@ button:active{transform:scale(.97)}
   </section>
 </main>
 
-<!-- PIN SCREEN -->
-<main id="pin-screen" class="screen pin-screen">
-  <div class="pin-logo">ر</div>
-  <div>
-    <div class="pin-title" id="pin-screen-title">أدخل رمز السر</div>
-    <div style="color:var(--muted);font-size:12px;margin-top:4px" id="pin-screen-sub"></div>
-  </div>
-  <div class="pin-dots" id="pin-dots">
-    <div class="pin-dot" id="pd0"></div>
-    <div class="pin-dot" id="pd1"></div>
-    <div class="pin-dot" id="pd2"></div>
-    <div class="pin-dot" id="pd3"></div>
-  </div>
-  <div class="pin-error" id="pin-error"></div>
-  <div class="pin-pad">
-    <button class="pin-btn" onclick="pinPress('1')">١</button>
-    <button class="pin-btn" onclick="pinPress('2')">٢</button>
-    <button class="pin-btn" onclick="pinPress('3')">٣</button>
-    <button class="pin-btn" onclick="pinPress('4')">٤</button>
-    <button class="pin-btn" onclick="pinPress('5')">٥</button>
-    <button class="pin-btn" onclick="pinPress('6')">٦</button>
-    <button class="pin-btn" onclick="pinPress('7')">٧</button>
-    <button class="pin-btn" onclick="pinPress('8')">٨</button>
-    <button class="pin-btn" onclick="pinPress('9')">٩</button>
-    <button class="pin-btn empty" disabled></button>
-    <button class="pin-btn" onclick="pinPress('0')">٠</button>
-    <button class="pin-btn del" onclick="pinDel()">⌫</button>
-  </div>
-  <button class="pin-link" id="pin-alt-btn" onclick="pinAlt()">تسجيل الدخول بالبريد الإلكتروني</button>
-</main>
 
 <!-- ONBOARDING -->
 <main id="onboarding-screen" class="screen onboarding-screen">
@@ -531,13 +481,6 @@ button:active{transform:scale(.97)}
       <label>الاسم<input id="settings-name" type="text"/></label>
       <label>العملة الافتراضية للعرض<select id="settings-default-currency"></select></label>
       <label>ميزانية الشهر المختار<input id="settings-budget" type="number" min="0" step="0.01"/></label>
-      <div class="pin-setting-row">
-        <div>
-          <div style="font-size:13px;font-weight:900">رمز السر السريع (4 أرقام)</div>
-          <div class="pin-setting-label" id="pin-status-text">غير مفعّل</div>
-        </div>
-        <button class="small-btn" type="button" onclick="openChangePinModal()">تعديل</button>
-      </div>
       <div class="row-actions">
         <button class="primary-btn" type="button" onclick="saveSettings()">حفظ التعديلات</button>
         <button class="secondary-btn" type="button" onclick="logoutUser()">تسجيل الخروج</button>
@@ -618,31 +561,6 @@ button:active{transform:scale(.97)}
       <button class="primary-btn" type="submit">حفظ</button>
     </form>
 
-    <!-- PIN Setup Form -->
-    <div id="pin-setup-form" class="modal-form" style="flex-direction:column;gap:16px;align-items:center;text-align:center">
-      <p style="color:var(--muted);font-size:13px" id="pin-setup-info">أدخل رمز السر الجديد (4 أرقام)</p>
-      <div class="pin-dots" id="setup-pin-dots">
-        <div class="pin-dot" id="spd0"></div>
-        <div class="pin-dot" id="spd1"></div>
-        <div class="pin-dot" id="spd2"></div>
-        <div class="pin-dot" id="spd3"></div>
-      </div>
-      <div class="pin-pad">
-        <button type="button" class="pin-btn" onclick="setupPinPress('1')">١</button>
-        <button type="button" class="pin-btn" onclick="setupPinPress('2')">٢</button>
-        <button type="button" class="pin-btn" onclick="setupPinPress('3')">٣</button>
-        <button type="button" class="pin-btn" onclick="setupPinPress('4')">٤</button>
-        <button type="button" class="pin-btn" onclick="setupPinPress('5')">٥</button>
-        <button type="button" class="pin-btn" onclick="setupPinPress('6')">٦</button>
-        <button type="button" class="pin-btn" onclick="setupPinPress('7')">٧</button>
-        <button type="button" class="pin-btn" onclick="setupPinPress('8')">٨</button>
-        <button type="button" class="pin-btn" onclick="setupPinPress('9')">٩</button>
-        <button type="button" class="pin-btn empty" disabled></button>
-        <button type="button" class="pin-btn" onclick="setupPinPress('0')">٠</button>
-        <button type="button" class="pin-btn del" onclick="setupPinDel()">⌫</button>
-      </div>
-      <button class="small-btn danger" type="button" onclick="removePin()">إزالة رمز السر</button>
-    </div>
   </article>
 </section>
 
@@ -689,15 +607,6 @@ let currentEmail=null, userData=null, selectedMonth=getCurrentMonth(), activeFil
 let onboardingStep=0;
 let logoTapCount=0, logoTapTimer=null;
 
-// PIN state
-let pinBuffer='';
-let pinMode='login'; // 'login' | 'setup-new' | 'setup-confirm'
-let pinNewTemp='';
-
-// Setup PIN state (in modal)
-let setupPinBuffer='';
-let setupPinPhase='new'; // 'new' | 'confirm'
-let setupPinNew='';
 
 const onboardingSteps=[
   {title:'أهلاً بيك في رصد',text:'هنسألك شوية أسئلة بسيطة أول مرة بس عشان التطبيق يشتغل على بياناتك من البداية.',html:()=>''},
@@ -726,7 +635,7 @@ function saveUser(){
 }
 
 function makeDefaultData(name){
-  return{name,defaultCurrency:'EGP',onboarded:false,months:[getCurrentMonth()],budgets:{},transactions:[],debts:[],photo:null,pin:null};
+  return{name,defaultCurrency:'EGP',onboarded:false,months:[getCurrentMonth()],budgets:{},transactions:[],debts:[],photo:null};
 }
 
 function getCurrentMonth(){
@@ -778,13 +687,11 @@ function loginUser(event){
   // migrate old data
   if(!userData.debts)userData.debts=[];
   if(!userData.photo)userData.photo=null;
-  if(userData.pin===undefined)userData.pin=null;
   localStorage.setItem(STORAGE_CURRENT,currentEmail);
   selectedMonth=getCurrentMonth();
   ensureMonth(selectedMonth);
   saveUser();
   if(!userData.onboarded){showOnboarding();}
-  else if(userData.pin){showPinScreen('login');}
   else{openApp();}
 }
 
@@ -815,129 +722,6 @@ function logoutUser(){
   $('app-screen').classList.remove('active');
   $('auth-screen').classList.add('active');
   switchAuth('login');
-}
-
-// ============================
-// PIN SYSTEM
-// ============================
-function showPinScreen(mode){
-  pinMode=mode;
-  pinBuffer='';
-  updatePinDots();
-  $('pin-error').textContent='';
-  $('pin-screen-title').textContent=mode==='login'?'أدخل رمز السر':'اضبط رمز السر الجديد';
-  $('pin-screen-sub').textContent=mode==='login'?(userData?.name||''):'';
-  $('pin-alt-btn').style.display=mode==='login'?'block':'none';
-  hideAllScreens();
-  $('pin-screen').classList.add('active');
-}
-
-function hideAllScreens(){
-  ['auth-screen','pin-screen','onboarding-screen','app-screen'].forEach(id=>$(id).classList.remove('active'));
-}
-
-function pinPress(digit){
-  if(pinBuffer.length>=4)return;
-  pinBuffer+=digit;
-  updatePinDots();
-  if(pinBuffer.length===4)setTimeout(processPinInput,150);
-}
-
-function pinDel(){
-  pinBuffer=pinBuffer.slice(0,-1);
-  updatePinDots();
-}
-
-function updatePinDots(){
-  for(let i=0;i<4;i++){
-    const d=$(`pd${i}`);
-    if(d)d.classList.toggle('filled',i<pinBuffer.length);
-  }
-}
-
-function processPinInput(){
-  if(pinMode==='login'){
-    if(pinBuffer===userData.pin){
-      openApp();
-    }else{
-      $('pin-error').textContent='رمز السر غير صحيح. حاول مرة أخرى.';
-      pinBuffer='';
-      updatePinDots();
-      // shake animation
-      const dots=$('pin-dots');
-      dots.style.animation='none';
-      setTimeout(()=>{dots.style.animation='shake .4s ease';},10);
-    }
-  }
-}
-
-function pinAlt(){
-  // Go back to email login
-  hideAllScreens();
-  $('auth-screen').classList.add('active');
-  currentEmail=null;userData=null;
-  localStorage.removeItem(STORAGE_CURRENT);
-}
-
-// Setup PIN in modal
-function openChangePinModal(){
-  setupPinBuffer='';
-  setupPinPhase='new';
-  setupPinNew='';
-  $('pin-setup-info').textContent='أدخل رمز السر الجديد (4 أرقام)';
-  updateSetupPinDots();
-  openModal('pin-setup');
-}
-
-function setupPinPress(digit){
-  if(setupPinBuffer.length>=4)return;
-  setupPinBuffer+=digit;
-  updateSetupPinDots();
-  if(setupPinBuffer.length===4)setTimeout(processSetupPin,150);
-}
-function setupPinDel(){
-  setupPinBuffer=setupPinBuffer.slice(0,-1);
-  updateSetupPinDots();
-}
-function updateSetupPinDots(){
-  for(let i=0;i<4;i++){
-    const d=$(`spd${i}`);
-    if(d)d.classList.toggle('filled',i<setupPinBuffer.length);
-  }
-}
-function processSetupPin(){
-  if(setupPinPhase==='new'){
-    setupPinNew=setupPinBuffer;
-    setupPinBuffer='';
-    setupPinPhase='confirm';
-    $('pin-setup-info').textContent='أعد إدخال رمز السر للتأكيد';
-    updateSetupPinDots();
-  }else{
-    if(setupPinBuffer===setupPinNew){
-      userData.pin=setupPinNew;
-      saveUser();
-      closeModal();
-      updatePinStatusText();
-      showToast('تم حفظ رمز السر بنجاح ✓');
-    }else{
-      setupPinBuffer='';
-      setupPinPhase='new';
-      setupPinNew='';
-      $('pin-setup-info').textContent='الرمز غير متطابق. حاول من جديد.';
-      updateSetupPinDots();
-    }
-  }
-}
-function removePin(){
-  userData.pin=null;
-  saveUser();
-  closeModal();
-  updatePinStatusText();
-  showToast('تم إزالة رمز السر');
-}
-function updatePinStatusText(){
-  const el=$('pin-status-text');
-  if(el)el.textContent=userData.pin?'مفعّل ✓':'غير مفعّل';
 }
 
 // ============================
@@ -980,9 +764,7 @@ function finishOnboarding(){
   userData.onboarded=true;
   ensureMonth(selectedMonth);
   saveUser();
-  // After onboarding, offer PIN setup
   openApp();
-  setTimeout(()=>openChangePinModal(),800);
 }
 
 // ============================
@@ -1378,7 +1160,6 @@ function renderSettings(){
   const prev=$('settings-photo-preview');
   if(userData.photo){prev.innerHTML=`<img src="${userData.photo}" alt="صورة"/>`;}
   else{prev.innerHTML=escapeHTML((userData.name||'ر').trim()[0]);}
-  updatePinStatusText();
 }
 
 function handlePhotoUpload(event){
@@ -1410,7 +1191,7 @@ function openModal(mode){
   $('modal').classList.add('active');
   $('modal').setAttribute('aria-hidden','false');
   // Hide all modal forms
-  ['transaction-form','budget-form','month-form','debt-form','pin-setup-form'].forEach(id=>{
+  ['transaction-form','budget-form','month-form','debt-form'].forEach(id=>{
     const el=$(id);if(el){el.classList.remove('active');el.style.display='none';}
   });
 
@@ -1454,16 +1235,7 @@ function openModal(mode){
     $('debt-currency').innerHTML=currencyOptions(userData.defaultCurrency);
     $('debt-date').value=today();
     $('debt-note').value='';
-  }else if(mode==='pin-setup'){
-    $('modal-title').textContent='رمز السر السريع';
-    showForm('pin-setup-form');
-    setupPinBuffer='';
-    setupPinPhase='new';
-    setupPinNew='';
-    $('pin-setup-info').textContent='أدخل رمز السر الجديد (4 أرقام)';
-    updateSetupPinDots();
   }
-}
 
 function closeModal(){
   $('modal').classList.remove('active');
@@ -1544,12 +1316,10 @@ function boot(){
     // Migrate old data
     if(!userData.debts)userData.debts=[];
     if(!userData.months)userData.months=[];
-    if(userData.pin===undefined)userData.pin=null;
     if(!userData.photo)userData.photo=null;
     selectedMonth=getCurrentMonth();
     ensureMonth(selectedMonth);
     if(!userData.onboarded){showOnboarding();}
-    else if(userData.pin){showPinScreen('login');}
     else{openApp();}
   }else{
     $('auth-screen').classList.add('active');
@@ -1559,10 +1329,6 @@ function boot(){
   }
 }
 
-// CSS for shake animation
-const shakeStyle=document.createElement('style');
-shakeStyle.textContent=`@keyframes shake{0%,100%{transform:translateX(0)}20%,60%{transform:translateX(-8px)}40%,80%{transform:translateX(8px)}}`;
-document.head.appendChild(shakeStyle);
 
 document.addEventListener('DOMContentLoaded',boot);
 </script>
